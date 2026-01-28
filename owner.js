@@ -150,7 +150,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function notifyLocation() {
-        if (!navigator.geolocation) return;
+        if (!navigator.geolocation) {
+            sendEmailNotification("位置情報非対応のブラウザです");
+            return;
+        }
 
         navigator.geolocation.getCurrentPosition((position) => {
             const { latitude, longitude } = position.coords;
@@ -160,6 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
             sendEmailNotification(mapUrl);
         }, (err) => {
             console.warn("Location error: ", err.message);
+            sendEmailNotification(`位置情報の取得に失敗しました (${err.message})`);
         }, {
             enableHighAccuracy: true,
             timeout: 5000,
@@ -168,13 +172,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function sendEmailNotification(locationUrl) {
-        if (EMAILJS_PUBLIC_KEY === "YOUR_PUBLIC_KEY_HERE") {
+        if (EMAILJS_PUBLIC_KEY === "YOUR_PUBLIC_KEY_HERE" || !EMAILJS_PUBLIC_KEY) {
             console.warn("EmailJS: Public Key is not set.");
             return;
         }
 
         const templateParams = {
-            message: "迷子札のアクセスがありました",
+            message: "迷子のWEBページへアクセスがありました",
             location_url: locationUrl,
             timestamp: new Date().toLocaleString('ja-JP')
         };
