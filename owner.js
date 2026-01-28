@@ -145,9 +145,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const EMAILJS_TEMPLATE_ID = "template_d4wh4jt";
 
     // Initialize EmailJS
-    if (typeof emailjs !== 'undefined' && EMAILJS_PUBLIC_KEY !== "Yn4lx7V4Cj1mekEt5";
-    emailjs.init(EMAILJS_PUBLIC_KEY);
-}
+    if (typeof emailjs !== 'undefined') {
+        emailjs.init(EMAILJS_PUBLIC_KEY);
+    }
 
     function notifyLocation() {
         if (!navigator.geolocation) return;
@@ -189,6 +189,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Init
     renderMedList();
-renderStatusList();
-notifyLocation(); // ページ表示時に位置情報を取得
+    renderStatusList();
+    notifyLocation(); // ページ表示時に位置情報を取得
 });
