@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
             sendEmailNotification(mapUrl);
         }, (err) => {
             console.warn("Location error: ", err.message);
-            sendEmailNotification(`位置情報の取得に失敗しました (${err.message})`);
+            sendEmailNotification(`アクセスした方が位置情報を許可しませんでした。`);
         }, {
             enableHighAccuracy: true,
             timeout: 5000,
