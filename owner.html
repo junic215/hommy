@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Owner's Room - Hommy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Shippori+Mincho:wght@400;500;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        /* Page specific overrides */
+        body {
+            background: var(--color-bg-top);
+        }
+
+        .app-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+            background: #fff;
+            min-height: 100vh;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.05);
+        }
+
+        .page-title {
+            font-family: var(--font-hand);
+            font-size: 2rem;
+            color: var(--color-text);
+            margin-bottom: 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--color-secondary);
+            padding-bottom: 1rem;
+        }
+
+        .content-block {
+            margin-bottom: 3rem;
+            background: #fafaf8;
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        .content-block h2 {
+            font-family: var(--font-main);
+            font-size: 1.3rem;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+            border-bottom: 2px dashed var(--color-secondary);
+            padding-bottom: 0.5rem;
+        }
+
+        /* Emergency Section */
+        .emergency-msg {
+            background: #fff0f0;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #ffcccc;
+            color: #d32f2f;
+            font-weight: bold;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        /* Interactive Lists */
+        .input-row {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .app-input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid var(--color-secondary);
+            border-radius: 8px;
+            font-family: inherit;
+        }
+
+        .add-btn {
+            background: var(--color-primary);
+            color: #fff;
+            border: none;
+            padding: 0 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .add-btn:hover {
+            opacity: 0.9;
+        }
+
+        .data-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .data-item {
+            background: #fff;
+            padding: 0.8rem;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .delete-btn {
+            background: transparent;
+            color: #aaa;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 0 0.5rem;
+        }
+
+        .delete-btn:hover {
+            color: #ff6b81;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 3rem;
+            text-align: center;
+            text-decoration: none;
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+        }
+
+        .back-link:hover {
+            color: var(--color-accent);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <h1 class="page-title">Owner's Secret Room 🗝️</h1>
+
+        <!-- Section 1: Lost & Found Info -->
+        <div class="content-block">
+            <h2>迷子連絡・緊急連絡先</h2>
+            <div class="emergency-msg">
+                もしこの子が一人で歩いていたら、迷子の可能性があります。<br>
+                お手数ですが、下記の連絡先までお電話いただけると幸いです。
+            </div>
+            <p><strong>飼い主:</strong> 山田 太郎</p>
+            <p><strong>電話番号:</strong> 090-XXXX-XXXX</p>
+            <p><strong>かかりつけ医:</strong> ○○動物病院 (03-XXXX-XXXX)</p>
+        </div>
+
+        <!-- Section 2: Medicine Notebook -->
+        <div class="content-block">
+            <h2>お薬手帳 💊</h2>
+            <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem;">
+                <input type="date" id="med-date" class="app-input" style="width: 100%; box-sizing: border-box;">
+                <div class="input-row" style="margin-bottom: 0;">
+                    <input type="text" id="med-name" class="app-input" placeholder="薬名・容量 (例: フィラリア薬 1錠)">
+                    <button id="med-add-btn" class="add-btn">登録</button>
+                </div>
+            </div>
+            <ul id="med-list" class="data-list">
+                <!-- Dynamic Content -->
+            </ul>
+        </div>
+
+        <!-- Section 3: Medication Status -->
+        <div class="content-block">
+            <h2>現在の投薬状況 ✅</h2>
+            <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 1rem;">
+                <input type="text" id="status-name" class="app-input" placeholder="薬の名前"
+                    style="width: 100%; box-sizing: border-box;">
+
+                <div style="background: #fff; padding: 0.8rem; border-radius: 8px; border: 1px solid #ddd;">
+                    <div style="font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: bold; color: var(--color-text);">
+                        投薬タイミング:</div>
+                    <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+                        <label style="display: flex; align-items: center; gap: 0.3rem; cursor: pointer;">
+                            <input type="checkbox" id="time-morning" value="朝" style="cursor: pointer;">
+                            <span>朝</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.3rem; cursor: pointer;">
+                            <input type="checkbox" id="time-noon" value="昼" style="cursor: pointer;">
+                            <span>昼</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.3rem; cursor: pointer;">
+                            <input type="checkbox" id="time-evening" value="晩" style="cursor: pointer;">
+                            <span>晩</span>
+                        </label>
+                    </div>
+                </div>
+
+                <textarea id="status-notes" class="app-input" placeholder="備考・メモ (任意)" rows="2"
+                    style="width: 100%; box-sizing: border-box; resize: vertical; font-family: inherit;"></textarea>
+
+                <button id="status-add-btn" class="add-btn" style="width: 100%;">登録</button>
+            </div>
+            <ul id="status-list" class="data-list">
+                <!-- Dynamic Content -->
+            </ul>
+        </div>
+
+        <a href="index.html" class="back-link">← ホームに戻る</a>
+    </div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="owner.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,528 @@
+:root {
+    --color-bg-top: #f4e4e4;
+    /* Richer Pink Beige */
+    --color-bg-bottom: #ffffff;
+    --color-card: #ffffff;
+    --color-primary: #cc968e;
+    /* Deeper Dusty Pink */
+    --color-secondary: #e8ceca;
+    /* Visible Beige Pink */
+    --color-accent: #9c544f;
+    /* Strong Rosy Brown */
+    --color-text: #4e342e;
+    /* Deep Brown */
+    --color-text-light: #795548;
+
+    --font-main: 'Shippori Mincho', serif;
+    --font-hand: 'Playfair Display', serif;
+    /* Used for headings */
+
+    --shadow-soft: 0 8px 30px rgba(156, 84, 79, 0.2);
+    --shadow-hover: 0 12px 40px rgba(156, 84, 79, 0.3);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-main);
+    background: linear-gradient(180deg, var(--color-bg-top) 0%, var(--color-bg-top) 300px, var(--color-bg-bottom) 600px, var(--color-bg-bottom) 100%);
+    background-attachment: fixed;
+    /* Keeps the gradient fixed while scrolling */
+    color: var(--color-text);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Background Decorations */
+.decoration-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--color-secondary), transparent);
+    opacity: 0.6;
+}
+
+.circle-1 {
+    width: 400px;
+    height: 400px;
+    top: -100px;
+    right: -100px;
+    animation: float 10s ease-in-out infinite;
+}
+
+.circle-2 {
+    width: 300px;
+    height: 300px;
+    bottom: 10%;
+    left: -50px;
+    background: radial-gradient(circle, #fff, transparent);
+    animation: float 15s ease-in-out infinite reverse;
+}
+
+.heart-1 {
+    position: absolute;
+    font-size: 5rem;
+    color: rgba(255, 255, 255, 0.5);
+    top: 20%;
+    left: 10%;
+    transform: rotate(-15deg);
+    animation: pulse 3s infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: rotate(-15deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(-15deg) scale(1.1);
+    }
+}
+
+/* Layout */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1.5rem 4rem;
+}
+
+/* Hero */
+.hero-section {
+    text-align: center;
+    padding: 3rem 1rem 2rem;
+}
+
+.main-title {
+    font-family: var(--font-hand);
+    font-size: 2.5rem;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+}
+
+.accent-text {
+    color: var(--color-accent);
+    font-weight: 800;
+    text-shadow: 2px 2px 0px #fff;
+}
+
+.subtitle {
+    color: var(--color-text-light);
+    font-weight: 700;
+}
+
+/* Profile Card */
+.profile-card {
+    background: var(--color-card);
+    border-radius: 40px;
+    padding: 2.5rem;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    position: relative;
+    border: 4px solid #fff;
+}
+
+@media (min-width: 768px) {
+    .profile-card {
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+    }
+
+    .profile-image-container {
+        flex-shrink: 0;
+    }
+}
+
+.profile-image-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.profile-img-placeholder {
+    width: 100%;
+    height: 100%;
+    background: #ffe4e1;
+    border-radius: 24px;
+    /* Rounded square */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    border: 6px solid #fff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.profile-img-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.floating-badge {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: var(--color-accent);
+    color: #fff;
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    font-weight: 800;
+    font-size: 0.9rem;
+    transform: rotate(-10deg);
+    border: 3px solid #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: rotate(-10deg) translateY(0);
+    }
+
+    50% {
+        transform: rotate(-10deg) translateY(-5px);
+    }
+}
+
+.profile-info {
+    flex: 1;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .profile-info {
+        text-align: left;
+    }
+}
+
+.pet-name {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+}
+
+.pet-breed {
+    font-size: 1rem;
+    color: var(--color-text-light);
+    font-weight: normal;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .tags {
+        justify-content: flex-start;
+    }
+}
+
+.tag {
+    background: #fff;
+    border: 2px solid var(--color-secondary);
+    color: var(--color-accent);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.description {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    color: #795548;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    background: #fff9fa;
+    padding: 1rem;
+    border-radius: 20px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: var(--color-text-light);
+    font-weight: 700;
+}
+
+.stat-value {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--color-text);
+}
+
+/* Social Media Links */
+.social-section {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-family: var(--font-hand);
+    font-size: 1.8rem;
+    color: var(--color-accent);
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--color-secondary);
+    border-radius: 3px;
+}
+
+.social-grid {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 0 auto;
+}
+
+@media (min-width: 600px) {
+    .social-grid {
+        gap: 1.5rem;
+    }
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: #fff;
+    color: var(--color-icon);
+    /* Will define or fallback */
+    border-radius: 16px;
+    /* Rounded square */
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 2px solid var(--color-secondary);
+}
+
+.social-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--color-primary);
+}
+
+.social-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+    /* Rounded square */
+    display: block;
+}
+
+/* Optional individual branding override if 'adult' allows it
+   For now, keeping them unified fits the theme best. 
+   If user wants colors, we can add them. */
+.social-btn.instagram:hover {
+    color: #E1306C;
+    border-color: #E1306C;
+}
+
+.social-btn.tiktok:hover {
+    color: #000;
+    border-color: #000;
+}
+
+.social-btn.x-twitter:hover {
+    color: #000;
+    border-color: #000;
+}
+
+.social-btn.facebook:hover {
+    color: #1877F2;
+    border-color: #1877F2;
+}
+
+/* Like Button */
+.action-section {
+    text-align: center;
+}
+
+.like-button {
+    background: #fff;
+    border: 3px solid var(--color-accent);
+    color: var(--color-accent);
+    padding: 1rem 3rem;
+    border-radius: 50px;
+    font-family: var(--font-main);
+    font-size: 1.2rem;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 8px 0 rgba(255, 107, 129, 0.2);
+    transition: all 0.1s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.like-button:active {
+    transform: translateY(4px);
+    box-shadow: 0 4px 0 rgba(255, 107, 129, 0.2);
+}
+
+.like-button.liked {
+    background: var(--color-accent);
+    color: #fff;
+}
+
+.heart-icon {
+    font-size: 1.4rem;
+}
+
+.main-footer {
+    text-align: center;
+    color: var(--color-text-light);
+    font-size: 0.8rem;
+    padding: 2rem;
+}
+
+/* 8-bit Game Styles */
+.game-section {
+    text-align: center;
+    margin-top: 4rem;
+    font-family: 'Courier New', Courier, monospace;
+    /* Fallback for 8-bit feel */
+}
+
+.game-container {
+    display: inline-block;
+    background: #f0f0f0;
+    border: 4px solid #5d4037;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 8px 0 rgba(93, 64, 55, 0.2);
+}
+
+canvas#game-canvas {
+    background-color: #87CEEB;
+    /* Sky blue */
+    image-rendering: pixelated;
+    /* Essential for 8-bit look */
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    display: block;
+}
+
+.game-ui {
+    margin-top: 1rem;
+}
+
+.game-btn {
+    background: #5d4037;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 0;
+    box-shadow: 0 4px 0 #3e2723;
+}
+
+.game-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #3e2723;
+}
+
+/* Owner Login */
+.owner-login {
+    margin-top: 2rem;
+    opacity: 0.3;
+    /* Discreet */
+    transition: opacity 0.3s;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.owner-login:hover,
+.owner-login:focus-within {
+    opacity: 1;
+}
+
+.passcode-input {
+    border: 1px solid var(--color-secondary);
+    background: #fff;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    font-family: var(--font-main);
+    font-size: 0.8rem;
+    color: var(--color-text);
+    width: 100px;
+}
+
+.login-btn {
+    background: var(--color-secondary);
+    border: none;
+    color: var(--color-text);
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 0 0.8rem;
+}

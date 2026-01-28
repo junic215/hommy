@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Shippori+Mincho:wght@400;500;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="decoration-bg">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="heart heart-1">❤</div>
+    </div>
+
+    <header class="hero-section">
+        <div class="hero-content">
+            <h1 class="main-title">My Name is <span class="accent-text">ほむ</span></h1>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="profile-card">
+            <div class="profile-image-container">
+                <!-- Placeholder for pet image -->
+                <div class="profile-img-placeholder" id="hero-img">
+                    <img src="pic/pic.png" alt="My Cute Pet" />
+                </div>
+                <div class="floating-badge">Cute!</div>
+            </div>
+
+            <div class="profile-info">
+                <h2 class="pet-name">ほむちゃん <span class="pet-breed">(トイプードル)</span></h2>
+
+
+
+                <p class="description">
+                    毎日元気いっぱい！お散歩とボール遊びが大好きな男の子です。<br>
+                    チャームポイントは、嬉しいと丸まる尻尾！<br>
+                    最近は「お手」をごまかして「おかわり」までするのが得意技。
+                </p>
+
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-label">誕生日</span>
+                        <span class="stat-value">2023.04.15</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">好きなもの</span>
+                        <span class="stat-value">ジャーキー</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">性格</span>
+                        <span class="stat-value">甘えん坊</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="social-section">
+            <h3 class="section-title">Follow Me!</h3>
+            <div class="social-grid">
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"
+                    class="social-btn instagram" aria-label="Instagram">
+                    <img src="SNS/instagram.jpg" alt="Instagram">
+                </a>
+                <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" class="social-btn tiktok"
+                    aria-label="TikTok">
+                    <img src="SNS/tiktok.jpg" alt="TikTok">
+                </a>
+
+                <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="social-btn youtube"
+                    aria-label="YouTube">
+                    <img src="SNS/youtube.jpg" alt="YouTube">
+                </a>
+                <a href="https://line.me/" target="_blank" rel="noopener noreferrer" class="social-btn line"
+                    aria-label="LINE">
+                    <img src="SNS/line.jpg" alt="LINE">
+                </a>
+            </div>
+        </section>
+
+        <section class="action-section">
+            <button id="like-btn" class="like-button">
+                <span class="heart-icon">❤</span>
+                <span class="like-text">かわいいね！</span>
+                <span class="like-count" id="like-count">0</span>
+            </button>
+        </section>
+
+        <!-- 8-bit Game Section -->
+        <section class="game-section">
+            <section class="game-section">
+                <h3 class="section-title">Homu's Walking Game</h3>
+                <div>
+                    <div class="game-container">
+                        <canvas id="game-canvas" width="320" height="320"></canvas>
+                        <div class="game-ui">
+                            <div id="score">SCORE: 0</div>
+                            <button id="start-btn" class="game-btn">START</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2026 Hommy Page</p>
+
+        <div class="owner-login">
+            <input type="password" id="owner-passcode" placeholder="Passcode" class="passcode-input">
+            <button id="owner-login-btn" class="login-btn">→</button>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="game.js"></script>
+</body>
+
+</html>
