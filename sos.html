@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>緊急連絡先 - HELP ME</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Shippori+Mincho:wght@400;500;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        body {
+            background: #fffafa;
+            /* Very light pink/red for emergency */
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .sos-header {
+            color: #d32f2f;
+            font-family: var(--font-hand);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .pet-image {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            border: 4px solid #fff;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .emergency-box {
+            background: #fff0f0;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 2px dashed #ffcccc;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            color: #333;
+            font-family: var(--font-main);
+        }
+
+        .contact-info {
+            text-align: left;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info p {
+            margin: 10px 0;
+            font-size: 1.1rem;
+            font-family: var(--font-main);
+        }
+
+        .call-btn {
+            display: block;
+            background: #d32f2f;
+            color: #fff;
+            text-decoration: none;
+            padding: 1rem;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+            transition: transform 0.2s;
+        }
+
+        .call-btn:active {
+            transform: scale(0.95);
+        }
+
+        .footer-msg {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="sos-header">HELP ME!</h1>
+        <img src="pic/pic.png" alt="Pet Image" class="pet-image">
+
+        <div class="emergency-box">
+            <p>この子を保護していただきありがとうございます。<br>
+                大切な家族の一員（トイプードルのほむちゃん）です。<br>
+                お手数ですが、下記までご連絡をいただけますでしょうか。</p>
+        </div>
+
+        <div class="contact-info">
+            <p><strong>飼い主:</strong> 山田 太郎</p>
+            <p><strong>連絡先:</strong> 090-XXXX-XXXX</p>
+        </div>
+
+        <a href="tel:090XXXXXXXX" class="call-btn">📞 飼い主に電話をかける</a>
+
+        <p class="footer-msg">※アクセス時に位置情報が飼い主に通知されています。</p>
+    </div>
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="sos.js"></script>
+</body>
+
+</html>
